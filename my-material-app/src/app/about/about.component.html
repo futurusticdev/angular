@@ -1,0 +1,131 @@
+<div class="about-container">
+  <!-- Mission and Values Section -->
+  <mat-card class="section-card">
+    <mat-card-header>
+      <mat-card-title>Our Mission & Values</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Our mission is to provide exceptional veterinary care with compassion and expertise. We are committed to:</p>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListItemIcon>pets</mat-icon>
+          <div matListItemTitle>Excellence in Care</div>
+          <div matListItemLine>Delivering the highest standard of veterinary medicine</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon>favorite</mat-icon>
+          <div matListItemTitle>Compassionate Service</div>
+          <div matListItemLine>Treating every pet with love and respect</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListItemIcon>school</mat-icon>
+          <div matListItemTitle>Continuous Learning</div>
+          <div matListItemLine>Staying current with veterinary advances</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- History Section -->
+  <mat-card class="section-card">
+    <mat-card-header>
+      <mat-card-title>Our History</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-vertical-stepper>
+        <mat-step>
+          <ng-template matStepLabel>2010 - Foundation</ng-template>
+          <p>Established with a commitment to excellence in veterinary care.</p>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>2015 - Expansion</ng-template>
+          <p>Expanded our facility to include advanced diagnostic equipment.</p>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>2020 - Innovation</ng-template>
+          <p>Introduced telemedicine services and digital health records.</p>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Present Day</ng-template>
+          <p>Continuing to grow and serve our community with state-of-the-art care.</p>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Accreditations Section -->
+  <mat-card class="section-card">
+    <mat-card-header>
+      <mat-card-title>Accreditations & Certifications</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="2" rowHeight="100px">
+        <mat-grid-tile *ngFor="let cert of accreditations">
+          <div class="certification-item">
+            <mat-icon>verified</mat-icon>
+            <span>{{cert}}</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Staff Section -->
+  <mat-card class="section-card">
+    <mat-card-header>
+      <mat-card-title>Our Team</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let staff of staffMembers">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{staff.name}}</mat-panel-title>
+            <mat-panel-description>{{staff.role}}</mat-panel-description>
+          </mat-expansion-panel-header>
+          <img [src]="staff.image" [alt]="staff.name" class="staff-image">
+          <p>{{staff.bio}}</p>
+          <mat-chip-set>
+            <mat-chip *ngFor="let specialty of staff.specialties">
+              {{specialty}}
+            </mat-chip>
+          </mat-chip-set>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Facility Section -->
+  <mat-card class="section-card">
+    <mat-card-header>
+      <mat-card-title>Our Facility</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="facility-info">
+        <div class="facility-text">
+          <h3>State-of-the-Art Equipment</h3>
+          <p>Our facility features the latest in veterinary technology, including:</p>
+          <ul>
+            <li>Digital X-ray imaging</li>
+            <li>In-house laboratory</li>
+            <li>Surgical suite</li>
+            <li>Recovery ward</li>
+          </ul>
+        </div>
+        <div class="virtual-tour">
+          <h3>Virtual Tour</h3>
+          <mat-tab-group>
+            <mat-tab label="Reception">
+              <img src="assets/images/reception.jpg" alt="Reception Area">
+            </mat-tab>
+            <mat-tab label="Exam Rooms">
+              <img src="assets/images/exam-room.jpg" alt="Examination Room">
+            </mat-tab>
+            <mat-tab label="Surgery">
+              <img src="assets/images/surgery.jpg" alt="Surgery Room">
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
