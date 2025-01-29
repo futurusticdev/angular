@@ -19,12 +19,12 @@
       <form class="booking-form">
         <mat-form-field appearance="outline">
           <mat-label>Pet's Name</mat-label>
-          <input matInput placeholder="Enter pet's name" />
+          <input matInput placeholder=" " />
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Service Type</mat-label>
-          <mat-select>
+          <mat-select placeholder=" ">
             <mat-option value="checkup">Regular Checkup</mat-option>
             <mat-option value="vaccination">Vaccination</mat-option>
             <mat-option value="dental">Dental Care</mat-option>
@@ -34,7 +34,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Preferred Date</mat-label>
-          <input matInput [matDatepicker]="picker" />
+          <input matInput [matDatepicker]="picker" placeholder=" " />
           <mat-datepicker-toggle
             matIconSuffix
             [for]="picker"
