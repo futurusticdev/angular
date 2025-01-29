@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "sass:math";
 
 // Include the common styles for Angular Material
 @include mat.core();
@@ -19,6 +20,35 @@
   --elevation-1: 0 2px 4px rgba(0, 0, 0, 0.08);
   --elevation-2: 0 4px 8px rgba(0, 0, 0, 0.12);
   --elevation-3: 0 8px 16px rgba(0, 0, 0, 0.16);
+
+  /* Grid System */
+  --grid-columns: 12;
+  --grid-gutter: 1.5rem;
+  --container-padding: 1rem;
+  --vertical-rhythm: 1.5rem;
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.2);
+
+  /* Form Elements */
+  --input-height: 3.5rem;
+  --input-padding: 1rem;
+  --input-border: 1px solid rgba(0, 0, 0, 0.1);
+  --input-radius: 8px;
+  --input-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  --label-size: 0.875rem;
 }
 
 /* Global styles */
@@ -151,6 +181,42 @@ p,
       animation: shimmer 1.5s infinite;
     }
   }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    .header-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+    }
+
+    .header-content {
+      flex: 1;
+    }
+  }
+
+  .card-content {
+    padding: var(--vertical-rhythm);
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
 }
 
 .mat-mdc-card-header {
@@ -166,8 +232,117 @@ p,
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* Form Field Overrides */
 .mat-mdc-form-field {
+  --mdc-filled-text-field-container-shape: var(--input-radius);
+  --mdc-filled-text-field-container-padding-left: var(--input-padding);
+  --mdc-filled-text-field-container-padding-right: var(--input-padding);
+  --mdc-filled-text-field-input-text-placeholder-color: rgba(0, 0, 0, 0.4);
   width: 100%;
+
+  .mdc-text-field {
+    background-color: white !important;
+    border-radius: var(--input-radius);
+    padding: 0 !important;
+    height: var(--input-height);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-base);
+
+    &:hover:not(.mdc-text-field--disabled) {
+      border-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &.mdc-text-field--focused {
+      border-color: var(--color-primary, #1976d2);
+      border-width: 1px !important;
+      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+    }
+
+    &:not(.mdc-text-field--disabled) .mdc-floating-label {
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .mdc-floating-label {
+      top: 50%;
+      transform: translateY(-50%);
+      left: var(--input-padding);
+      pointer-events: none;
+    }
+
+    .mdc-floating-label--float-above {
+      transform: translateY(-106%) scale(0.75);
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 0 var(--input-padding) !important;
+      min-height: var(--input-height);
+    }
+
+    .mdc-line-ripple {
+      display: none;
+    }
+  }
+
+  // Input specific styles
+  .mat-mdc-input-element {
+    padding: 0;
+    margin-top: 0 !important;
+    caret-color: var(--color-primary, #1976d2);
+  }
+
+  // Select specific styles
+  .mat-mdc-select {
+    padding: 0;
+  }
+
+  // Datepicker toggle
+  .mat-datepicker-toggle {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  // Error state
+  &.mat-form-field-invalid {
+    .mdc-text-field {
+      border-color: var(--color-error, #f44336);
+    }
+
+    .mat-error {
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      animation: slideIn 0.3s ease-out;
+    }
+  }
+}
+
+// Select panel styles
+.mat-mdc-select-panel {
+  border-radius: var(--input-radius) !important;
+  box-shadow: var(--shadow-lg) !important;
+  background: white;
+  margin-top: 4px !important;
+
+  .mat-mdc-option {
+    min-height: 48px;
+
+    &:hover:not(.mdc-list-item--disabled) {
+      background: rgba(25, 118, 210, 0.04);
+    }
+
+    &.mat-mdc-option-active {
+      background: rgba(25, 118, 210, 0.08);
+    }
+  }
+}
+
+// Datepicker styles
+.mat-datepicker-content {
+  border-radius: var(--input-radius) !important;
+  box-shadow: var(--shadow-lg) !important;
+  margin-top: 4px !important;
+
+  .mat-calendar {
+    border-radius: inherit;
+  }
 }
 
 /* Utility classes */
@@ -175,10 +350,65 @@ p,
   text-align: center;
 }
 
+/* Grid System */
+$grid-columns: 12;
+
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: var(--container-padding);
+  max-width: 100%;
+
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 960px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * var(--grid-gutter) / 2);
+  margin-left: calc(-1 * var(--grid-gutter) / 2);
+
+  > * {
+    padding-right: calc(var(--grid-gutter) / 2);
+    padding-left: calc(var(--grid-gutter) / 2);
+  }
+}
+
+// Column classes
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    flex: 0 0 math.percentage(math.div($i, $grid-columns));
+    max-width: math.percentage(math.div($i, $grid-columns));
+  }
+}
+
+@media (min-width: 768px) {
+  @for $i from 1 through $grid-columns {
+    .col-md-#{$i} {
+      flex: 0 0 math.percentage(math.div($i, $grid-columns));
+      max-width: math.percentage(math.div($i, $grid-columns));
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  @for $i from 1 through $grid-columns {
+    .col-lg-#{$i} {
+      flex: 0 0 math.percentage(math.div($i, $grid-columns));
+      max-width: math.percentage(math.div($i, $grid-columns));
+    }
+  }
 }
 
 .mt-1 {
@@ -366,5 +596,91 @@ p,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Enhanced Navigation */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 var(--container-padding);
+
+    @media (min-width: 768px) {
+      height: 72px;
+    }
+  }
+
+  .nav-brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-right: 2rem;
+  }
+
+  .nav-menu {
+    display: none;
+
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 0.5rem 0;
+
+    &.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+  }
+
+  .nav-search {
+    margin-left: auto;
+    width: 300px;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      max-width: 200px;
+    }
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

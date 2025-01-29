@@ -1,39 +1,42 @@
 .home-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: var(--container-padding);
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
 }
 
 // Emergency Banner
 .emergency-banner {
-  background: #ef5350;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
   color: white;
-  margin-bottom: 2rem;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-bottom: var(--vertical-rhythm);
 
   mat-icon {
-    margin-right: 1rem;
     font-size: 2rem;
-    height: 2rem;
     width: 2rem;
+    height: 2rem;
   }
 
   .emergency-content {
     h3 {
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
     }
 
     p {
       margin: 0.5rem 0 0;
-      
+
       a {
         color: white;
         text-decoration: none;
-        font-weight: bold;
-        
+        font-weight: 500;
+
         &:hover {
           text-decoration: underline;
         }
@@ -42,66 +45,58 @@
   }
 }
 
-// Booking Form
+// Booking Card
 .booking-card {
-  margin-bottom: 3rem;
-  
-  mat-card-header {
-    margin-bottom: 1.5rem;
-  }
+  margin-bottom: var(--vertical-rhythm);
 
   .booking-form {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    
+    padding: 1rem;
+
     button {
-      margin-top: 1rem;
-      width: 100%;
+      justify-self: start;
+      min-width: 150px;
     }
   }
 }
 
 // Services Section
 .services-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--vertical-rhythm);
 
   h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--grid-gutter);
 
     mat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
       padding: 2rem;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
 
       mat-icon {
         font-size: 2.5rem;
-        height: 2.5rem;
         width: 2.5rem;
-        color: #3f51b5;
+        height: 2.5rem;
         margin-bottom: 1rem;
+        color: var(--color-primary);
       }
 
       h3 {
         margin: 0 0 1rem;
-        color: #2c3e50;
       }
 
       p {
-        color: #666;
-        margin-bottom: 1rem;
+        margin: 0 0 1.5rem;
+        flex-grow: 1;
       }
     }
   }
@@ -109,24 +104,27 @@
 
 // Doctor Spotlight
 .doctors-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--vertical-rhythm);
 
   h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .doctor-spotlight {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 2rem;
 
-    mat-icon {
-      font-size: 2.5rem;
-      height: 2.5rem;
-      width: 2.5rem;
-      color: #3f51b5;
+    mat-card-header {
+      margin-bottom: 1rem;
+
+      .mat-mdc-card-avatar {
+        background: rgba(var(--color-primary-rgb), 0.1);
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
     }
 
     mat-chip-set {
@@ -135,48 +133,45 @@
   }
 }
 
-// Testimonials Section
+// Testimonials
 .testimonials-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--vertical-rhythm);
 
   h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: var(--grid-gutter);
 
     mat-card {
-      padding: 2rem;
-
       .quote-icon {
         font-size: 2rem;
-        height: 2rem;
         width: 2rem;
-        color: #3f51b5;
+        height: 2rem;
         margin-bottom: 1rem;
+        color: rgba(var(--color-primary-rgb), 0.2);
       }
 
       .testimonial-text {
-        font-size: 1.1rem;
         font-style: italic;
-        color: #2c3e50;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.6;
       }
 
       .testimonial-author {
+        display: flex;
+        flex-direction: column;
+
         strong {
-          display: block;
-          color: #2c3e50;
+          color: var(--color-primary);
         }
 
         span {
-          color: #666;
-          font-size: 0.9rem;
+          font-size: 0.875rem;
+          color: rgba(0, 0, 0, 0.6);
         }
       }
     }
@@ -186,37 +181,47 @@
 // News Section
 .news-section {
   h2 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: var(--grid-gutter);
 
     mat-card {
-      mat-icon {
-        font-size: 2rem;
-        height: 2rem;
-        width: 2rem;
-        color: #3f51b5;
+      display: flex;
+      flex-direction: column;
+
+      mat-card-header {
+        margin-bottom: 1rem;
+
+        .mat-mdc-card-avatar {
+          background: rgba(var(--color-primary-rgb), 0.1);
+          color: var(--color-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+        }
       }
 
       mat-card-content {
-        padding: 1rem 0;
+        flex-grow: 1;
       }
 
       mat-card-actions {
-        padding: 0 1rem 1rem;
+        padding: 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
     }
   }
 }
 
+// Responsive Adjustments
 @media (max-width: 768px) {
   .home-container {
     padding: 1rem;
@@ -230,6 +235,5 @@
   .testimonials-grid,
   .news-grid {
     grid-template-columns: 1fr !important;
-    gap: 1rem !important;
   }
 }
