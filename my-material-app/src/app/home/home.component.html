@@ -10,42 +10,71 @@
     </div>
   </mat-card>
 
-  <!-- Quick Appointment Booking -->
-  <mat-card class="booking-card">
-    <mat-card-header>
-      <mat-card-title>Book an Appointment</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="booking-form">
-        <mat-form-field appearance="outline">
-          <mat-label>Pet's Name</mat-label>
-          <input matInput placeholder=" " />
-        </mat-form-field>
+  <!-- New Appointment Booking Section -->
+  <section class="appointment-section">
+    <div class="appointment-header">
+      <h2>Schedule a Visit</h2>
+      <p class="subtitle">Book an appointment for your pet's care</p>
+    </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Service Type</mat-label>
-          <mat-select placeholder=" ">
-            <mat-option value="checkup">Regular Checkup</mat-option>
-            <mat-option value="vaccination">Vaccination</mat-option>
-            <mat-option value="dental">Dental Care</mat-option>
-            <mat-option value="surgery">Surgery Consultation</mat-option>
-          </mat-select>
-        </mat-form-field>
+    <div class="appointment-form-container">
+      <form class="appointment-form">
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Pet's Name</mat-label>
+            <input matInput type="text" placeholder=" " />
+            <mat-icon matSuffix>pets</mat-icon>
+          </mat-form-field>
+        </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Preferred Date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder=" " />
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Type of Visit</mat-label>
+            <mat-select placeholder=" ">
+              <mat-option value="wellness">Wellness Check</mat-option>
+              <mat-option value="vaccination">Vaccination</mat-option>
+              <mat-option value="dental">Dental Care</mat-option>
+              <mat-option value="surgery">Surgery Consultation</mat-option>
+              <mat-option value="emergency">Emergency Visit</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>medical_services</mat-icon>
+          </mat-form-field>
+        </div>
 
-        <button mat-raised-button color="primary">Book Now</button>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Preferred Date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder=" " />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Preferred Time</mat-label>
+            <mat-select placeholder=" ">
+              <mat-option value="morning">Morning (9AM - 12PM)</mat-option>
+              <mat-option value="afternoon">Afternoon (12PM - 4PM)</mat-option>
+              <mat-option value="evening">Evening (4PM - 7PM)</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>schedule</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button mat-stroked-button type="button">Clear Form</button>
+          <button mat-raised-button color="primary" type="submit">
+            <mat-icon>event</mat-icon>
+            Schedule Appointment
+          </button>
+        </div>
       </form>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </section>
 
   <!-- Featured Medical Services -->
   <section class="services-section">
