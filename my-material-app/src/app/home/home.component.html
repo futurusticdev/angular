@@ -17,12 +17,12 @@
     </mat-card-header>
     <mat-card-content>
       <form class="booking-form">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Pet's Name</mat-label>
           <input matInput placeholder="Enter pet's name" />
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Service Type</mat-label>
           <mat-select>
             <mat-option value="checkup">Regular Checkup</mat-option>
@@ -32,7 +32,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
           <mat-label>Preferred Date</mat-label>
           <input matInput [matDatepicker]="picker" />
           <mat-datepicker-toggle
