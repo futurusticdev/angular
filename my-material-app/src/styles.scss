@@ -45,10 +45,7 @@
   /* Form Elements */
   --input-height: 3.5rem;
   --input-padding: 1rem;
-  --input-border: 1px solid rgba(0, 0, 0, 0.1);
   --input-radius: 8px;
-  --input-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-  --label-size: 0.875rem;
 }
 
 /* Global styles */
@@ -232,117 +229,19 @@ p,
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Form Field Overrides */
+/* Remove all form field styles */
 .mat-mdc-form-field {
-  --mdc-filled-text-field-container-shape: var(--input-radius);
-  --mdc-filled-text-field-container-padding-left: var(--input-padding);
-  --mdc-filled-text-field-container-padding-right: var(--input-padding);
-  --mdc-filled-text-field-input-text-placeholder-color: rgba(0, 0, 0, 0.4);
   width: 100%;
-
-  .mdc-text-field {
-    background-color: white !important;
-    border-radius: var(--input-radius);
-    padding: 0 !important;
-    height: var(--input-height);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all var(--transition-base);
-
-    &:hover:not(.mdc-text-field--disabled) {
-      border-color: rgba(0, 0, 0, 0.2);
-    }
-
-    &.mdc-text-field--focused {
-      border-color: var(--color-primary, #1976d2);
-      border-width: 1px !important;
-      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
-    }
-
-    &:not(.mdc-text-field--disabled) .mdc-floating-label {
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    .mdc-floating-label {
-      top: 50%;
-      transform: translateY(-50%);
-      left: var(--input-padding);
-      pointer-events: none;
-    }
-
-    .mdc-floating-label--float-above {
-      transform: translateY(-106%) scale(0.75);
-    }
-
-    .mat-mdc-form-field-infix {
-      padding: 0 var(--input-padding) !important;
-      min-height: var(--input-height);
-    }
-
-    .mdc-line-ripple {
-      display: none;
-    }
-  }
-
-  // Input specific styles
-  .mat-mdc-input-element {
-    padding: 0;
-    margin-top: 0 !important;
-    caret-color: var(--color-primary, #1976d2);
-  }
-
-  // Select specific styles
-  .mat-mdc-select {
-    padding: 0;
-  }
-
-  // Datepicker toggle
-  .mat-datepicker-toggle {
-    color: rgba(0, 0, 0, 0.54);
-  }
-
-  // Error state
-  &.mat-form-field-invalid {
-    .mdc-text-field {
-      border-color: var(--color-error, #f44336);
-    }
-
-    .mat-error {
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
-      animation: slideIn 0.3s ease-out;
-    }
-  }
 }
 
-// Select panel styles
+// Remove select panel styles
 .mat-mdc-select-panel {
-  border-radius: var(--input-radius) !important;
-  box-shadow: var(--shadow-lg) !important;
-  background: white;
   margin-top: 4px !important;
-
-  .mat-mdc-option {
-    min-height: 48px;
-
-    &:hover:not(.mdc-list-item--disabled) {
-      background: rgba(25, 118, 210, 0.04);
-    }
-
-    &.mat-mdc-option-active {
-      background: rgba(25, 118, 210, 0.08);
-    }
-  }
 }
 
-// Datepicker styles
+// Remove datepicker styles
 .mat-datepicker-content {
-  border-radius: var(--input-radius) !important;
-  box-shadow: var(--shadow-lg) !important;
   margin-top: 4px !important;
-
-  .mat-calendar {
-    border-radius: inherit;
-  }
 }
 
 /* Utility classes */

@@ -4,7 +4,9 @@
     <mat-icon>local_hospital</mat-icon>
     <div class="emergency-content">
       <h3>24/7 Emergency Care</h3>
-      <p>Call us immediately at: <a href="tel:1-800-VET-HELP">1-800-VET-HELP</a></p>
+      <p>
+        Call us immediately at: <a href="tel:1-800-VET-HELP">1-800-VET-HELP</a>
+      </p>
     </div>
   </mat-card>
 
@@ -15,12 +17,12 @@
     </mat-card-header>
     <mat-card-content>
       <form class="booking-form">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Pet's Name</mat-label>
-          <input matInput placeholder="Enter pet's name">
+          <input matInput placeholder="Enter pet's name" />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Service Type</mat-label>
           <mat-select>
             <mat-option value="checkup">Regular Checkup</mat-option>
@@ -30,10 +32,13 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Preferred Date</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
@@ -47,9 +52,9 @@
     <h2>Our Medical Services</h2>
     <div class="services-grid">
       <mat-card *ngFor="let service of featuredServices">
-        <mat-icon>{{service.icon}}</mat-icon>
-        <h3>{{service.name}}</h3>
-        <p>{{service.description}}</p>
+        <mat-icon>{{ service.icon }}</mat-icon>
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
         <button mat-button color="primary">Learn More</button>
       </mat-card>
     </div>
@@ -65,7 +70,10 @@
         <mat-card-subtitle>Chief Veterinarian</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>Specializing in small animal medicine with over 15 years of experience.</p>
+        <p>
+          Specializing in small animal medicine with over 15 years of
+          experience.
+        </p>
         <mat-chip-set>
           <mat-chip>Surgery</mat-chip>
           <mat-chip>Internal Medicine</mat-chip>
@@ -82,10 +90,10 @@
       <mat-card *ngFor="let testimonial of testimonials">
         <mat-card-content>
           <mat-icon class="quote-icon">format_quote</mat-icon>
-          <p class="testimonial-text">"{{testimonial.text}}"</p>
+          <p class="testimonial-text">"{{ testimonial.text }}"</p>
           <div class="testimonial-author">
-            <strong>{{testimonial.author}}</strong>
-            <span>{{testimonial.petName}}'s Parent</span>
+            <strong>{{ testimonial.author }}</strong>
+            <span>{{ testimonial.petName }}'s Parent</span>
           </div>
         </mat-card-content>
       </mat-card>
@@ -99,11 +107,11 @@
       <mat-card *ngFor="let post of blogPosts">
         <mat-card-header>
           <mat-icon mat-card-avatar>article</mat-icon>
-          <mat-card-title>{{post.title}}</mat-card-title>
-          <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+          <mat-card-title>{{ post.title }}</mat-card-title>
+          <mat-card-subtitle>{{ post.date }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p>{{post.excerpt}}</p>
+          <p>{{ post.excerpt }}</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button color="primary">Read More</button>
